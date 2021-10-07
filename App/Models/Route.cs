@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace App.Models
 {
@@ -8,7 +9,7 @@ namespace App.Models
     /// </summary>
     public class Route
     {
-        public Route(string cityFrom, string cityTo, double weight, int duration, double cost, PackageType type, Guid id)
+        public Route(string cityFrom, string cityTo, double weight, int duration, double cost, PackageType type)
         {
             CityFrom = cityFrom;
             CityTo = cityTo;
@@ -16,10 +17,10 @@ namespace App.Models
             Duration = duration;
             Cost = cost;
             Type = type;
-            Id = id;
         }
 
-        [Key] public Guid Id { get; private set; }
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)] public Guid Id { get; private set; }
         public string CityFrom { get; private set; }
         public string CityTo { get; private set; }
         public double Weight { get; private set; }

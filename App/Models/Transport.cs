@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace App.Models
 {
@@ -14,10 +15,10 @@ namespace App.Models
             CityTo = cityTo;
             Weight = weight;
             Type = type;
-            Id = Guid.NewGuid();
         }
 
-        [Key] public Guid Id { get; private set; }
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)] public Guid Id { get; private set; }
         public string Company { get; private set; }
         public Guid BookingId { get; private set; }
         public Guid TransportId { get; private set; }

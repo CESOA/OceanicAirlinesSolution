@@ -6,7 +6,8 @@ namespace App.Models
 {
     public class Order
     {
-        public Order(RouteOption selectedRoute, User userInfo, Payment paymentInfo, Address deliveryAddress, string comment)
+        public Order(RouteOption selectedRoute, User userInfo, Payment paymentInfo, 
+            Address deliveryAddress, string comment)
         {
             Id = Guid.NewGuid();
             SelectedRoute = selectedRoute;
@@ -16,11 +17,12 @@ namespace App.Models
             Comment = comment;
         }
 
-        [Key] public Guid Id { get;}
-        [ForeignKey("Id")] public RouteOption SelectedRoute { get; set; }
-        [ForeignKey("Id")] public User UserInfo { get; set; }
-        [ForeignKey("Id")] public Payment PaymentInfo { get; set; }
-        [ForeignKey("Id")] public Address DeliveryAddress { get; set; }
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)] public Guid Id { get; private set; }
+        public RouteOption SelectedRoute { get; set; }
+        public User UserInfo { get; set; }
+        public Payment PaymentInfo { get; set; }
+        public Address DeliveryAddress { get; set; }
         public string Comment { get; set; }
     }
 }

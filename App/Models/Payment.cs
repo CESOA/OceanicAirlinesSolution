@@ -1,5 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace App.Models
 {
     public class Payment
@@ -10,10 +12,10 @@ namespace App.Models
             CardNo = cardNo;
             ExpirationDate = expirationDate;
             Cvv = cvv;
-            Id = Guid.NewGuid();
         }
 
-        [Key] public Guid Id { get; private set; }
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)] public Guid Id { get; private set; }
         public string CardholdersName { get; set; }
         public string CardNo { get; set; }
         public string ExpirationDate { get; set; }

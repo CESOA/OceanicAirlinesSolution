@@ -1,12 +1,13 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace App.Models
 {
     public class User
     {
         public User(string name, string phonenumber, string email, string password, bool loggedStatus, string street,
-            string streetNumber, string city, string zipCode, string country, Guid id)
+            string streetNumber, string city, string zipCode, string country)
         {
             Name = name;
             Phonenumber = phonenumber;
@@ -18,10 +19,10 @@ namespace App.Models
             City = city;
             ZipCode = zipCode;
             Country = country;
-            Id = id;
         }
 
-        [Key] public Guid Id { get; private set; }
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)] public Guid Id { get; private set; }
         public string Name { get; private set; }
         public string Phonenumber { get; private set; }
         public string Email { get; private set; }
