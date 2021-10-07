@@ -10,5 +10,12 @@ namespace App.Controllers
 
             return View();
         }
+
+        public ActionResult SearchPage()
+        {
+            ViewBag.Title = "Search Page";
+
+            return View();
+        }
     }
 }
