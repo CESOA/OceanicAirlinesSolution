@@ -1,24 +1,23 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace App.Models
 {
     /// <summary>
     ///     The model that represents a Route between specific cities.
     /// </summary>
-    // TODO: Uncomment all
     public class RouteOption
     {
-        // private readonly DateTime expectedDeliveryTime;
-        // private readonly Order order;
-        // private readonly double price;
-        // private readonly PackageRequest rackageRequest;
-        //
-        // public RouteOption(DateTime expectedDeliveryTime, double price, Order order, PackageRequest rackageRequest)
-        // {
-        //     this.expectedDeliveryTime = expectedDeliveryTime;
-        //     this.price = price;
-        //     this.order = order;
-        //     this.rackageRequest = rackageRequest;
-        // }
+        [Key] public Guid Id { get; private set; }
+        public DateTime ExpectedDeliveryTime { get; private set; }
+        public double Price { get; private set; }
+        public PackageRequest PackageRequest { get; }
+
+        public RouteOption(DateTime expectedDeliveryTime, double price, PackageRequest packageRequest)
+        {
+            ExpectedDeliveryTime = expectedDeliveryTime;
+            Price = price;
+            PackageRequest = packageRequest;
+        }
     }
 }

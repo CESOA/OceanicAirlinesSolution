@@ -1,4 +1,7 @@
-﻿namespace App.Models
+﻿using System;
+using System.ComponentModel.DataAnnotations;
+
+namespace App.Models
 {
     public class Address
     {
@@ -12,15 +15,17 @@
             ZipCode = zipCode;
             City = city;
             Country = country;
+            Id = Guid.NewGuid();
         }
 
-        private string Name { get; set; }
-        private string Email { get; set; }
-        private string PhoneNo { get; set; }
-        private string Street { get; set; }
-        private string StreetNo { get; set; }
-        private string ZipCode { get; set; }
-        private string City { get; set; }
-        private string Country { get; set; }
+        [Key] public Guid Id { get; private set; }
+        public string Name { get; private set; }
+        public string Email { get; private set; }
+        public string PhoneNo { get; private set; }
+        public string Street { get; private set; }
+        public string StreetNo { get; private set; }
+        public string ZipCode { get; private set; }
+        public string City { get; private set; }
+        public string Country { get; private set; }
     }
 }

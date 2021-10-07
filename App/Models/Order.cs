@@ -1,10 +1,11 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace App.Models
 {
     public class Order
     {
-        // private RouteOption RouteOption { get; set; } todo!
         public Order(RouteOption selectedRoute, User userInfo, Payment paymentInfo, Address deliveryAddress, string comment)
         {
             Id = Guid.NewGuid();
@@ -15,11 +16,11 @@ namespace App.Models
             Comment = comment;
         }
 
-        private Guid Id { get;}
-        private RouteOption SelectedRoute { get; set; }
-        private User UserInfo { get; set; }
-        private Payment PaymentInfo { get; set; }
-        private Address DeliveryAddress { get; set; }
-        private string Comment { get; set; }
+        [Key] public Guid Id { get;}
+        [ForeignKey("Id")] public RouteOption SelectedRoute { get; set; }
+        [ForeignKey("Id")] public User UserInfo { get; set; }
+        [ForeignKey("Id")] public Payment PaymentInfo { get; set; }
+        [ForeignKey("Id")] public Address DeliveryAddress { get; set; }
+        public string Comment { get; set; }
     }
 }

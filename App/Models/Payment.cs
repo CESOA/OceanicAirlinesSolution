@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
+using System.ComponentModel.DataAnnotations;
 namespace App.Models
 {
     public class Payment
@@ -13,11 +10,13 @@ namespace App.Models
             CardNo = cardNo;
             ExpirationDate = expirationDate;
             Cvv = cvv;
+            Id = Guid.NewGuid();
         }
 
-        private string CardholdersName { get; set; }
-        private string CardNo { get; set; }
-        private string ExpirationDate { get; set; }
-        private string Cvv { get; set; }
+        [Key] public Guid Id { get; private set; }
+        public string CardholdersName { get; set; }
+        public string CardNo { get; set; }
+        public string ExpirationDate { get; set; }
+        public string Cvv { get; set; }
     }
 }

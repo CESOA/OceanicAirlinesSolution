@@ -1,6 +1,6 @@
 ﻿namespace App.Models
 {
-    public enum RouteType
+    public enum PackageType
     {
         Default,
         Weapons,
