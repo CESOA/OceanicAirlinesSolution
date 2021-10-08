@@ -1,4 +1,8 @@
-﻿namespace App.Models
+﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace App.Models
 {
     public class Address
     {
@@ -14,13 +18,15 @@
             Country = country;
         }
 
-        private string Name { get; set; }
-        private string Email { get; set; }
-        private string PhoneNo { get; set; }
-        private string Street { get; set; }
-        private string StreetNo { get; set; }
-        private string ZipCode { get; set; }
-        private string City { get; set; }
-        private string Country { get; set; }
+        [Key] 
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)] public Guid Id { get; private set; }
+        public string Name { get; private set; }
+        public string Email { get; private set; }
+        public string PhoneNo { get; private set; }
+        public string Street { get; private set; }
+        public string StreetNo { get; private set; }
+        public string ZipCode { get; private set; }
+        public string City { get; private set; }
+        public string Country { get; private set; }
     }
 }

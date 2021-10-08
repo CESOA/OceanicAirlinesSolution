@@ -1,4 +1,8 @@
-﻿namespace App.Models
+﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace App.Models
 {
     public class User
     {
@@ -17,15 +21,17 @@
             Country = country;
         }
 
-        public string Name { get; }
-        public string Phonenumber { get; }
-        public string Email { get; }
-        public string Password { get; }
-        public bool LoggedStatus { get; }
-        public string Street { get; }
-        public string StreetNumber { get; }
-        public string City { get; }
-        public string ZipCode { get; }
-        public string Country { get; }
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)] public Guid Id { get; private set; }
+        public string Name { get; private set; }
+        public string Phonenumber { get; private set; }
+        public string Email { get; private set; }
+        public string Password { get; private set; }
+        public bool LoggedStatus { get; private set; }
+        public string Street { get; private set; }
+        public string StreetNumber { get; private set; }
+        public string City { get; private set; }
+        public string ZipCode { get; private set; }
+        public string Country { get; private set; }
     }
 }

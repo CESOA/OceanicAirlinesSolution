@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace App.Models
 {
@@ -15,9 +14,11 @@ namespace App.Models
             Cvv = cvv;
         }
 
-        private string CardholdersName { get; set; }
-        private string CardNo { get; set; }
-        private string ExpirationDate { get; set; }
-        private string Cvv { get; set; }
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)] public Guid Id { get; private set; }
+        public string CardholdersName { get; set; }
+        public string CardNo { get; set; }
+        public string ExpirationDate { get; set; }
+        public string Cvv { get; set; }
     }
 }
